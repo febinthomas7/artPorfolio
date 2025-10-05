@@ -7,7 +7,7 @@ function Newsletter() {
 
   // 🔹 Your Google Apps Script Web App URL
   const GOOGLE_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbxWw0B9Bj0X2rI97WRf2TZ5P7eFAnUyskVZedjJNOZbHleVu19eKH3ey76CUBGl4I0gww/exec";
+    "https://script.google.com/macros/s/AKfycbzllRKzBdHalr62mbCTTkb3_8A-gqH_seK7YiAPk1xTgwRoAbSgAAwRcW_wU3eIoWOb/exec";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,12 +35,12 @@ function Newsletter() {
         setTimeout(() => {
           form.current.reset(); // ✅ this will clear the form
         }, 1000);
-      } else if (data.result === "error") {
-        toast.info("You are already subscribed!", {
+      } else if (data.result === "exist") {
+        toast.info(data.message, {
           position: "top-center",
         });
       } else {
-        toast.error("Something went wrong. Please try again.", {
+        toast.error(data.message, {
           position: "top-center",
         });
       }
