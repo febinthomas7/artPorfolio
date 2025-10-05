@@ -8,4 +8,4 @@ status = 200
 
 [build]
 functions = "functions/"
-command = "npm install --prefix functions/sendEmail && npm install --prefix functions/sendSubscribeEmail && npm run build"
+command = "npm install --prefix functions/sendEmail && npm run build"
