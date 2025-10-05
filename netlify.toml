@@ -5,5 +5,8 @@ status = 200
 
 
 [build]
-functions = "functions/"
-command = "npm install --prefix functions/sendEmail && npm run build"
+  command = "npm run build"
+  publish = "build"
+
+[functions]
+  directory = "netlify/functions"
