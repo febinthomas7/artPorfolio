@@ -35,13 +35,13 @@ const generateNotificationTemplate = (name, email, message) => `
 </html>
 `;
 
-const generateWelcomeTemplate = (name) => `
+const generateSubscriptionTemplate = (name) => `
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thanks for Contacting Febin Thomas</title>
+  <title>Thanks for Subscribing Tesin Thomas</title>
 </head>
 <body style="font-family: Arial, sans-serif; background-color: #f9f9f9; margin: 0; padding: 0;">
   <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);">
@@ -72,12 +72,12 @@ const generateWelcomeTemplate = (name) => `
       </div>
 
       <p style="line-height: 1.6; color: #555;">Best regards,</p>
-      <p style="line-height: 1.6; color: #555;">Febin Thomas</p>
+      <p style="line-height: 1.6; color: #555;">Tesin Thomas</p>
     </div>
     
     <!-- Footer -->
     <div style="background-color: #f1f1f1; color: #777; text-align: center; padding: 12px; font-size: 13px;">
-      <p style="margin: 0;">&copy; ${new Date().getFullYear()} Febin Thomas. All rights reserved.</p>
+      <p style="margin: 0;">&copy; ${new Date().getFullYear()} Tesin Thomas. All rights reserved.</p>
     </div>
   </div>
 </body>
@@ -86,5 +86,5 @@ const generateWelcomeTemplate = (name) => `
 
 module.exports = {
   generateNotificationTemplate,
-  generateWelcomeTemplate,
+  generateSubscriptionTemplate,
 };

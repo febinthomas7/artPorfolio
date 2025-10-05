@@ -12,7 +12,7 @@ function Home() {
   const scrollImages = [
     "./scroll/20_01_2022_SCI_FI_DESERT_SPACESHIP_practice_work_1-min.webp",
     "/scroll/Background_1-min.webp",
-    "/scroll/CA-BG_1-min.webp",
+    // "/scroll/CA-BG_1-min.webp",
     "/scroll/Dream_Land_01_1-min.webp",
     "/scroll/leah_the_quiet_ladybug_pg9-10_copy_1-min.webp",
     "/scroll/old_man_s_dog_memory_LIT_1-min.webp",
@@ -159,7 +159,7 @@ function Home() {
       {imagesLoaded && (
         <div className="marquee ScrollImg">
           <div className="wrapper" ref={wrapperRef}>
-            {scrollImages.map((src, index) => (
+            {scrollImages?.map((src, index) => (
               <img key={index} className="box" src={src} alt="" />
             ))}
           </div>

@@ -32,6 +32,7 @@ function Newsletter() {
         toast.success("Subscribed successfully!", {
           position: "top-center",
         });
+        getintouch();
         setTimeout(() => {
           form.current.reset(); // ✅ this will clear the form
         }, 1000);
@@ -50,6 +51,23 @@ function Newsletter() {
       });
     } finally {
       setLoading(false);
+    }
+  };
+
+  const getintouch = async () => {
+    try {
+      const res = await fetch("/.netlify/functions/sendSubscribedEmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: form.current.firstName.value,
+          lastName: form.current.lastName.value,
+          email: form.current.email.value,
+          message: form.current.message.value,
+        }),
+      });
+    } catch (error) {
+      console.error("Error sending message:", error);
     }
   };
 

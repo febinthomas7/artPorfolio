@@ -45,8 +45,8 @@ function GalleryGrid({ dataUrl, title }) {
       )}
 
       <div className="containerr">
-        {images.map((image) => (
-          <div className="boxx" key={image.id}>
+        {images.map((image, index) => (
+          <div className="boxx" key={index}>
             <div className="boxShade" onClick={() => handleImageClick(image)}>
               {image.title}
             </div>
