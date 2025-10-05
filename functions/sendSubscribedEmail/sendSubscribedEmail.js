@@ -1,6 +1,8 @@
 require("dotenv").config();
 const nodemailer = require("nodemailer");
-const { generateSubscriptionTemplate } = require("./EmailTemplate.js");
+const {
+  generateSubscriptionTemplate,
+} = require("../sendEmail/EmailTemplate.js");
 
 exports.handler = async (event) => {
   try {
