@@ -550,7 +550,7 @@ img {
   left: calc(-1 * 60px);
   right: calc(-1 * 60px);
   z-index: 3;
-  box-shadow: inset -1px 20px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: inset -3px 13px 20px 0px rgba(0, 0, 0, 0.2);
 }
 .marquee::before {
   top: calc(-0.6 * 120px);
