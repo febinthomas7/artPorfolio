@@ -1,17 +1,23 @@
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-    if (!mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
+    setMobileMenuOpen((prev) => {
+      const newState = !prev;
+      document.body.style.overflow = newState ? "hidden" : "auto";
+      return newState;
+    });
   };
+
+  // 👇 Whenever route changes, close menu and restore scroll
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    document.body.style.overflow = "auto";
+  }, [location]);
 
   return (
     <header>
@@ -21,7 +27,7 @@ function Header() {
         </div>
       </Link>
 
-      <div className={`navbar ${mobileMenuOpen ? 'active' : ''}`} id="navbar">
+      <div className={`navbar ${mobileMenuOpen ? "active" : ""}`} id="navbar">
         <div className="dropdown">
           <button className="dropbtn">WORK</button>
           <div className="dropdown-content">
@@ -36,13 +42,15 @@ function Header() {
 
       <div className="mobile-navbar-btn">
         <i
-          className={`fa-solid fa-bars open ${mobileMenuOpen ? '' : 'active'}`}
-          style={{ display: mobileMenuOpen ? 'none' : 'flex' }}
+          className={`fa-solid fa-bars open ${mobileMenuOpen ? "" : "active"}`}
+          style={{ display: mobileMenuOpen ? "none" : "flex" }}
           onClick={toggleMobileMenu}
         ></i>
         <i
-          className={`fa-solid fa-xmark close ${mobileMenuOpen ? 'active' : ''}`}
-          style={{ display: mobileMenuOpen ? 'flex' : 'none' }}
+          className={`fa-solid fa-xmark close ${
+            mobileMenuOpen ? "active" : ""
+          }`}
+          style={{ display: mobileMenuOpen ? "flex" : "none" }}
           onClick={toggleMobileMenu}
         ></i>
       </div>

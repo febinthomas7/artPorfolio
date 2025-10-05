@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import Header from "../components/Header";
 import Newsletter from "../components/Newsletter";
 import "../SkeletonLoading.css";
+import { ToastContainer } from "react-toastify";
 
 function Home() {
   const [imagesLoaded, setImagesLoaded] = useState(false);
@@ -137,9 +138,9 @@ function Home() {
   };
 
   return (
-    <>
+    <div style={{ overflowX: "hidden" }}>
       <Header />
-
+      <ToastContainer autoClose={1000} hideProgressBar theme="dark" />
       {!imagesLoaded && (
         <div className="marquee skeleton">
           <div className="contain">
@@ -166,7 +167,7 @@ function Home() {
       )}
 
       <Newsletter />
-    </>
+    </div>
   );
 }
 

@@ -1,47 +1,55 @@
-import { useState } from 'react';
+import React, { useRef, useState } from "react";
+import { toast } from "react-toastify";
 
 function Newsletter() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-  });
-  const [showAlert, setShowAlert] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
+  const form = useRef();
+  const [loading, setLoading] = useState(false);
 
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  // 🔹 Your Google Apps Script Web App URL
+  const GOOGLE_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbxWw0B9Bj0X2rI97WRf2TZ5P7eFAnUyskVZedjJNOZbHleVu19eKH3ey76CUBGl4I0gww/exec";
 
-  const handleSubmit = async () => {
-    if (!formData.firstName || !formData.lastName || !formData.email) {
-      setShowAlert(true);
-      setTimeout(() => {
-        setShowAlert(false);
-      }, 3000);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form.current);
+    if (!form.current.checkValidity()) {
+      form.current.reportValidity(); // Show the default browser error UI
       return;
     }
 
+    setLoading(true);
     try {
-      const params = {
-        First_Name: formData.firstName,
-        Last_Name: formData.lastName,
-        Email_id: formData.email,
-      };
+      const res = await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        body: formData,
+        redirect: "follow",
+      });
 
-      if (window.emailjs) {
-        await window.emailjs.send('service_0ti6tap', 'template_5tey5xi', params);
-        setFormData({ firstName: '', lastName: '', email: '' });
-        setShowSuccess(true);
+      const data = await res.json();
+      console.log("Response from Google Apps Script:", data);
+      if (data.result == "success") {
+        toast.success("Subscribed successfully!", {
+          position: "top-center",
+        });
         setTimeout(() => {
-          setShowSuccess(false);
-        }, 3000);
+          form.current.reset(); // ✅ this will clear the form
+        }, 1000);
+      } else if (data.result === "error") {
+        toast.info("You are already subscribed!", {
+          position: "top-center",
+        });
+      } else {
+        toast.error("Something went wrong. Please try again.", {
+          position: "top-center",
+        });
       }
     } catch (error) {
-      console.error('Error sending email:', error);
+      toast.error("Something went wrong. Please try again.", {
+        position: "top-center",
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -52,36 +60,32 @@ function Newsletter() {
         <p>To keep up to date with original works...</p>
       </div>
 
-      {showAlert && <div className="alert">Fill The Fields Properly</div>}
-      {showSuccess && <div className="success">&nbsp;Subscribed&nbsp;</div>}
-
-      <div className="n-2">
+      <form ref={form} onSubmit={handleSubmit} className="n-2">
         <input
           type="text"
           name="firstName"
-          value={formData.firstName}
-          onChange={handleInputChange}
+          id="firstName"
           placeholder="First Name"
           required
         />
         <input
           type="text"
           name="lastName"
-          value={formData.lastName}
-          onChange={handleInputChange}
-          placeholder="Last name"
+          id="lastName"
+          placeholder="Last Name"
           required
         />
         <input
           type="email"
           name="email"
-          value={formData.email}
-          onChange={handleInputChange}
+          id="email"
           placeholder="Email Address"
           required
         />
-        <button onClick={handleSubmit}>sign up</button>
-      </div>
+        <button type="submit" onClick={handleSubmit} disabled={loading}>
+          {loading ? "Submitting..." : "Sign Up"}
+        </button>
+      </form>
 
       <div className="n-3">
         <p>We respect your privacy</p>
@@ -89,7 +93,7 @@ function Newsletter() {
 
       <div className="n-4">
         <a
-          style={{ color: 'black' }}
+          style={{ color: "black" }}
           href="https://www.instagram.com/tesinthomas/"
           target="_blank"
           rel="noopener noreferrer"
@@ -97,7 +101,7 @@ function Newsletter() {
           <i className="fa-brands fa-instagram"></i>
         </a>
         <a
-          style={{ color: 'black' }}
+          style={{ color: "black" }}
           href="https://www.facebook.com/tesin.thomas.927?mibextid=ZbWKwL"
           target="_blank"
           rel="noopener noreferrer"

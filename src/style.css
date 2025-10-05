@@ -122,6 +122,7 @@ img:hover {
 }
 body {
   overflow-x: hidden;
+  scroll-behavior: smooth;
   font-family: Arial, Helvetica, sans-serif;
 }
 hr {
@@ -147,6 +148,7 @@ hr {
 .navbar a {
   position: relative;
 }
+
 .FormAlert::after,
 .FormAlert::before,
 .success::after,
@@ -542,12 +544,13 @@ img {
   display: block;
   background-color: #fff;
   width: calc(100vw + 2 * 60px);
-  height: 130px;
+  height: 161px;
   position: absolute;
   border-radius: 50%;
   left: calc(-1 * 60px);
   right: calc(-1 * 60px);
   z-index: 3;
+  box-shadow: inset -1px 20px 20px rgba(0, 0, 0, 0.2);
 }
 .marquee::before {
   top: calc(-0.6 * 120px);
@@ -681,17 +684,22 @@ img {
     background: 0 0;
     padding: 17px 0 0;
   }
+  .marquee::before {
+    top: calc(-0.6 * 163px);
+  }
+
   .marquee::after,
   .marquee::before {
     content: "";
     display: block;
     background-color: rgb(255 255 255);
     width: calc(100vw + 2 * 60px);
-    height: 96px;
+    height: 120px;
     position: absolute;
     border-radius: 50%;
     left: calc(-1 * 60px);
     right: calc(-1 * 60px);
+    box-shadow: inset -2px 20px 17px 0px rgba(0, 0, 0, 0.2);
   }
   .marquee {
     position: relative;

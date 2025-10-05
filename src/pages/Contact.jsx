@@ -1,123 +1,56 @@
 import { useRef, useState } from "react";
 import Header from "../components/Header";
 import Newsletter from "../components/Newsletter";
+import { toast, ToastContainer } from "react-toastify";
 
 function Contact() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    message: "",
-  });
-  const [showAlert, setShowAlert] = useState(false);
   const form = useRef();
-
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (
-      !formData.firstName ||
-      !formData.lastName ||
-      !formData.email ||
-      !formData.message
-    ) {
-      return;
-    }
-
-    try {
-      const params = {
-        fname: formData.firstName,
-        lname: formData.lastName,
-        Email: formData.email,
-        message: formData.message,
-      };
-
-      if (window.emailjs) {
-        await window.emailjs.send(
-          "service_0ti6tap",
-          "template_5tey5xi",
-          params
-        );
-        setFormData({ firstName: "", lastName: "", email: "", message: "" });
-        setShowAlert(true);
-        setTimeout(() => {
-          setShowAlert(false);
-        }, 3000);
-      }
-    } catch (error) {
-      console.error("Error sending message:", error);
-    }
-  };
+  const [loading, setLoading] = useState(false);
 
   const getintouch = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData(form.current);
     if (!form.current.checkValidity()) {
-      form.current.reportValidity(); // Show the default browser error UI
+      form.current.reportValidity();
       return;
     }
-    const firstName = form.current.firstName.value;
-    const lastName = form.current.lastName.value;
 
-    const email = form.current.email.value;
-
-    const message = form.current.message.value;
-
-    if (!firstName || !email) {
-      setMessageLoading(false);
-      setMessageSend(false);
-      return;
-    }
-    // import.meta.env.VITE_GOOGLE_SHEET_URL
+    setLoading(true);
     try {
       const res = await fetch("/.netlify/functions/sendEmail", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           firstName: form.current.firstName.value,
           lastName: form.current.lastName.value,
           email: form.current.email.value,
           message: form.current.message.value,
         }),
-        redirect: "follow",
       });
 
       const data = await res.json();
-      if (data.success == true) {
-        setShowAlert(true);
-        setTimeout(() => {
-          form.current.reset(); // ✅ this will clear the form
-        }, 2000);
+      if (data.success) {
+        toast.success("✅ Your message was sent successfully!");
+        form.current.reset();
       } else {
-        throw new Error("Failed to send");
+        toast.error("❌ Failed to send your message. Please try again.");
       }
     } catch (error) {
       console.error("Error sending message:", error);
+      toast.error("⚠️ An error occurred while sending your message.");
     } finally {
-      setShowAlert(false);
+      setLoading(false);
     }
   };
 
   return (
-    <>
+    <div style={{ overflowX: "hidden" }}>
       <Header />
-
       <div className="c-2">
         <div className="c-3">
           <p>CONTACT US</p>
           <p>tesin96thomas@gmail.com</p>
-          <p>Delhi,india</p>
-
+          <p>Delhi, India</p>
           <div className="c-5">
             <a
               style={{ color: "black" }}
@@ -153,10 +86,6 @@ function Contact() {
             id="contactForm"
             autoComplete="on"
           >
-            {showAlert && (
-              <div className="FormAlert">&nbsp;Your message sent&nbsp;</div>
-            )}
-
             <div
               className="name"
               style={{ paddingBottom: 0, display: "block", width: "100%" }}
@@ -169,7 +98,7 @@ function Contact() {
                   height: "41px",
                 }}
               >
-                <div style={{ height: "auto" }}>
+                <div>
                   <input
                     type="text"
                     id="firstName"
@@ -178,7 +107,7 @@ function Contact() {
                     required
                   />
                 </div>
-                <div style={{ height: "auto" }}>
+                <div>
                   <input
                     type="text"
                     id="lastName"
@@ -200,11 +129,10 @@ function Contact() {
                 placeholder="Email"
                 required
               />
-              <br />
             </div>
 
             <div>
-              <label htmlFor="message">message*</label>
+              <label htmlFor="message">Message*</label>
               <br />
               <textarea
                 name="message"
@@ -216,8 +144,8 @@ function Contact() {
             </div>
 
             <div id="send">
-              <button onClick={getintouch} type="submit">
-                Send
+              <button type="submit" disabled={loading}>
+                {loading ? "Sending..." : "Send"}
               </button>
             </div>
           </form>
@@ -238,7 +166,13 @@ function Contact() {
       </div>
 
       <Newsletter />
-    </>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={1000}
+        hideProgressBar
+        theme="dark"
+      />
+    </div>
   );
 }
 

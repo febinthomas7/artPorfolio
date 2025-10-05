@@ -4,6 +4,7 @@ import { RouterProvider } from "react-router-dom";
 import router from "./routes";
 import FallBack from "./components/FallBack.jsx";
 import "./style.css";
+import "react-toastify/dist/ReactToastify.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Suspense fallback={<FallBack />}>
