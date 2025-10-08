@@ -1,22 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
-const delayedImport = (importFn, delay = 2000) =>
-  new Promise((resolve) => {
-    setTimeout(() => resolve(importFn()), delay);
-  });
-
-const Home = lazy(() => delayedImport(() => import("./pages/Home")));
-const About = lazy(() => delayedImport(() => import("./pages/About")));
-const Contact = lazy(() => delayedImport(() => import("./pages/Contact")));
-const ConceptArt = lazy(() =>
-  delayedImport(() => import("./pages/ConceptArt"))
-);
-const MattePainting = lazy(() =>
-  delayedImport(() => import("./pages/MattePainting"))
-);
-const Illustrations = lazy(() =>
-  delayedImport(() => import("./pages/Illustrations"))
-);
+const MattePainting = lazy(() => import("./pages/MattePainting"));
+const ConceptArt = lazy(() => import("./pages/ConceptArt"));
+const Contact = lazy(() => import("./pages/Contact"));
+const About = lazy(() => import("./pages/About"));
+const Home = lazy(() => import("./pages/Home"));
+const Illustrations = lazy(() => import("./pages/Illustrations"));
 
 const router = createBrowserRouter([
   {
