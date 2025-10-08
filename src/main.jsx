@@ -5,6 +5,7 @@ import router from "./routes";
 import FallBack from "./components/FallBack.jsx";
 import "./style.css";
 import "react-toastify/dist/ReactToastify.css";
+import "./loader.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Suspense fallback={<FallBack />}>

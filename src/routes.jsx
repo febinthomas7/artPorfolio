@@ -1,4 +1,4 @@
-import { Link, createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
 const MattePainting = lazy(() => import("./pages/MattePainting"));
 const ConceptArt = lazy(() => import("./pages/ConceptArt"));
