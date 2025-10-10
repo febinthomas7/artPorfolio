@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import imagesLoaded from "imagesloaded";
 import Header from "../components/Header";
 import Newsletter from "../components/Newsletter";
 import "../SkeletonLoading.css";
 import { ToastContainer } from "react-toastify";
 
 function Home() {
-  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [imagesLoadedState, setImagesLoadedState] = useState(false);
   const wrapperRef = useRef(null);
 
   const scrollImages = [
@@ -19,18 +20,26 @@ function Home() {
     "/scroll/unknown_1-min.webp",
   ];
 
+  // Use imagesLoaded to detect when all images are loaded
   useEffect(() => {
-    setTimeout(() => {
-      setImagesLoaded(true);
-    }, 500);
+    if (wrapperRef.current) {
+      const imgLoad = imagesLoaded(wrapperRef.current);
+      imgLoad.on("done", () => {
+        setImagesLoadedState(true);
+      });
+      imgLoad.on("fail", () => {
+        setImagesLoadedState(true); // even if some fail
+      });
+    }
   }, []);
 
+  // GSAP horizontal scroll
   useEffect(() => {
-    if (imagesLoaded && wrapperRef.current) {
+    if (imagesLoadedState && wrapperRef.current) {
       const boxes = wrapperRef.current.querySelectorAll(".box");
       horizontalLoop(boxes, { paused: false, repeat: -1 });
     }
-  }, [imagesLoaded]);
+  }, [imagesLoadedState]);
 
   const horizontalLoop = (items, config) => {
     items = gsap.utils.toArray(items);
@@ -141,10 +150,10 @@ function Home() {
     <div style={{ overflowX: "hidden" }}>
       <Header />
       <ToastContainer autoClose={1000} hideProgressBar theme="dark" />
-      {!imagesLoaded && (
+
+      {!imagesLoadedState && (
         <div className="marquee skeleton">
           <div className="contain">
-            qq
             {[...Array(7)].map((_, i) => (
               <div className="col-sm-6 col-md-3" key={i}>
                 <div className="movie--isloading">
@@ -156,15 +165,13 @@ function Home() {
         </div>
       )}
 
-      {imagesLoaded && (
-        <div className="marquee ScrollImg">
-          <div className="wrapper" ref={wrapperRef}>
-            {scrollImages?.map((src, index) => (
-              <img key={index} className="box" src={src} alt="" />
-            ))}
-          </div>
+      <div className="marquee ScrollImg">
+        <div className="wrapper" ref={wrapperRef}>
+          {scrollImages?.map((src, index) => (
+            <img key={index} className="box" src={src} alt="" />
+          ))}
         </div>
-      )}
+      </div>
 
       <Newsletter />
     </div>
