@@ -5,9 +5,9 @@ import Header from "../components/Header";
 import Newsletter from "../components/Newsletter";
 import "../SkeletonLoading.css";
 import { ToastContainer } from "react-toastify";
-
+import "../3Dscroll.css";
 function Home() {
-  const [imagesLoadedState, setImagesLoadedState] = useState(false);
+  const [loading, setLoading] = useState(true);
   const wrapperRef = useRef(null);
 
   const scrollImages = [
@@ -20,26 +20,22 @@ function Home() {
     "/scroll/unknown_1-min.webp",
   ];
 
-  // Use imagesLoaded to detect when all images are loaded
   useEffect(() => {
     if (wrapperRef.current) {
       const imgLoad = imagesLoaded(wrapperRef.current);
-      imgLoad.on("done", () => {
-        setImagesLoadedState(true);
-      });
-      imgLoad.on("fail", () => {
-        setImagesLoadedState(true); // even if some fail
+
+      imgLoad.on("always", () => {
+        setLoading(false);
       });
     }
   }, []);
 
-  // GSAP horizontal scroll
   useEffect(() => {
-    if (imagesLoadedState && wrapperRef.current) {
+    if (!loading && wrapperRef.current) {
       const boxes = wrapperRef.current.querySelectorAll(".box");
-      horizontalLoop(boxes, { paused: false, repeat: -1 });
+      horizontalLoop(boxes, { paused: false, repeat: -1, speed: 0.5 });
     }
-  }, [imagesLoadedState]);
+  }, [loading]);
 
   const horizontalLoop = (items, config) => {
     items = gsap.utils.toArray(items);
@@ -151,8 +147,8 @@ function Home() {
       <Header />
       <ToastContainer autoClose={1000} hideProgressBar theme="dark" />
 
-      {!imagesLoadedState && (
-        <div className="marquee skeleton">
+      <div className="marquee">
+        {loading && (
           <div className="contain">
             {[...Array(7)].map((_, i) => (
               <div className="col-sm-6 col-md-3" key={i}>
@@ -162,17 +158,25 @@ function Home() {
               </div>
             ))}
           </div>
-        </div>
-      )}
+        )}
 
-      <div className="marquee ScrollImg">
-        <div className="wrapper" ref={wrapperRef}>
-          {scrollImages?.map((src, index) => (
+        <div
+          className="wrapper"
+          ref={wrapperRef}
+          style={{
+            opacity: loading ? 0 : 1,
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            transition: "opacity 0.5s ease",
+          }}
+        >
+          {scrollImages.map((src, index) => (
             <img key={index} className="box" src={src} alt="" />
           ))}
         </div>
       </div>
-
       <Newsletter />
     </div>
   );

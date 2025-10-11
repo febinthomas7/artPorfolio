@@ -35,7 +35,7 @@ function GalleryGrid({ dataUrl, title }) {
   }, [images]);
 
   const breakpointColumnsObj = {
-    default: 3,
+    default: 4,
     1100: 3,
     700: 2,
     500: 2,
