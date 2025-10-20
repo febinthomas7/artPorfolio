@@ -49,7 +49,7 @@ function GalleryGrid({ dataUrl, title }) {
       <h1 className="gallery-title">{title}</h1>
 
       {loading ? (
-        <div className="masonry-skeleton">
+        <div className="my-masonry-grid">
           {[...Array(8)].map((_, i) => (
             <div key={i} className="skeleton-card"></div>
           ))}

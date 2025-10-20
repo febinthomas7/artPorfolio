@@ -1,3 +1,5 @@
+/* @import "tailwindcss"; */
+
 #contactForm,
 .column {
   flex-direction: column;
@@ -225,6 +227,7 @@ label {
 }
 .c-3 {
   padding: 0 100px;
+  animation: fadeleft 0.5s ease-in;
 }
 .c-3 p:first-child {
   font-size: 50px;
@@ -237,6 +240,27 @@ label {
 }
 .c-4 {
   padding: 7px 10px 10px;
+  animation: faderight 0.5s ease-in;
+}
+@keyframes fadeleft {
+  from {
+    opacity: 0;
+    transform: translatex(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translatex(0);
+  }
+}
+@keyframes faderight {
+  from {
+    opacity: 0;
+    transform: translatex(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translatex(0);
+  }
 }
 .c-5 {
   padding-top: 26px;
