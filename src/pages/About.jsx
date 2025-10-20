@@ -21,15 +21,11 @@ function About() {
 
         <div className="sections">
           <section className="section">
-            <div className="section-header">
-              {/* <Sparkles className="icon" /> */}
-              <h2>About</h2>
-            </div>
             <div className="text-content">
               <p>
                 Tesin Thomas is a passionate and skilled Graphic Designer and
                 Visual Storyteller with over 5 years of creative experience,
-                including roles as Associate – Art & Design at BYJU'S – Think &
+                including roles as Associate – Art & Design at BYJU’S – Think &
                 Learn Pvt. Ltd. and Senior Graphic Designer at Swiggy. With a
                 strong foundation in Art, Design, and Multimedia, Tesin combines
                 artistic vision, technical precision, and strategic thinking to
@@ -44,89 +40,33 @@ function About() {
                 layouts, branding campaigns, and storyboards to concept art,
                 book illustrations, and digital matte paintings.
               </p>
-            </div>
-          </section>
-
-          <section className="section">
-            <div className="section-header">
-              {/* <Briefcase className="icon" /> */}
-              <h2>Experience</h2>
-            </div>
-            <div className="cards">
-              <div className="card">
-                <h3>Senior Graphic Designer</h3>
-                <p className="company">Swiggy</p>
-                <p>
-                  Leading the design of UI layouts, app interfaces, and
-                  marketing campaigns, ensuring creative alignment with brand
-                  strategy to enhance user engagement and retention.
-                </p>
-              </div>
-
-              <div className="card">
-                <h3>Associate – Art & Design</h3>
-                <p className="company">BYJU'S – Think & Learn Pvt. Ltd.</p>
-                <p>
-                  Played a key role in creating educational visuals that made
-                  complex learning concepts interactive and visually engaging.
-                </p>
-              </div>
-
-              <div className="card">
-                <h3>Freelance Designer</h3>
-                <p className="company">Various Projects</p>
-                <p>
-                  Worked on numerous freelance projects, expanding exposure in
-                  the creative industry and refining skills in photography,
-                  photo editing, and retouching.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section className="section">
-            <div className="section-header">
-              {/* <GraduationCap className="icon" /> */}
-              <h2>Education</h2>
-            </div>
-            <div className="card">
-              <h3>B.Sc. in Animation and Multimedia</h3>
-              <p className="company">
-                Maharishi University of Information Technology, Noida
+              <p>
+                At BYJU’S, Tesin played a key role in creating educational
+                visuals that made complex learning concepts interactive and
+                visually engaging. At Swiggy, he currently leads the design of
+                UI layouts, app interfaces, and marketing campaigns, ensuring
+                creative alignment with brand strategy to enhance user
+                engagement and retention.
               </p>
-            </div>
-          </section>
 
-          <section className="section">
-            <div className="section-header">
-              {/* <Palette className="icon" /> */}
-              <h2>Core Skills & Tools</h2>
-            </div>
-            <div className="card skills-card">
-              <div className="skill-group">
-                <h3>Design Tools:</h3>
-                <p>
-                  Adobe Photoshop, Illustrator, InDesign, After Effects, Figma,
-                  Canva, Sketch
-                </p>
-              </div>
+              <p>
+                In addition to his professional roles, Tesin has worked on
+                numerous freelance projects, further expanding his exposure in
+                the creative industry and refining his skills in photography,
+                photo editing, and retouching. His academic foundation — a B.Sc.
+                in Animation and Multimedia from Maharishi University of
+                Information Technology, Noida — has strengthened both his
+                creative and technical expertise.
+              </p>
 
-              <div className="skill-group">
-                <h3>Specializations:</h3>
-                <p>
-                  Visual Design, UI/UX Layouts, Branding Campaigns,
-                  Storyboarding, Concept Art, Matte Painting, Typography, Logo &
-                  Poster Design
-                </p>
-              </div>
-
-              <div className="skill-group">
-                <h3>Creative Strengths:</h3>
-                <p>
-                  Detail-oriented, Innovative Thinker, Strong Collaborator,
-                  Effective Communicator
-                </p>
-              </div>
+              <p>
+                Tesin is not only a designer but also a creative thinker and
+                problem-solver. Constantly exploring new ideas, he embraces
+                emerging design trends and tools to deliver work that remains
+                both relevant and impactful. Known for his attention to detail,
+                collaboration, and storytelling-driven design, Tesin thrives in
+                dynamic environments where creativity meets purpose.
+              </p>
             </div>
           </section>
         </div>

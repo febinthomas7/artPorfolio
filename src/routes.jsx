@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
-const MattePainting = lazy(() => import("./pages/MattePainting"));
-const ConceptArt = lazy(() => import("./pages/ConceptArt"));
-const Contact = lazy(() => import("./pages/Contact"));
-const About = lazy(() => import("./pages/About"));
-const Home = lazy(() => import("./pages/Home"));
-const Illustrations = lazy(() => import("./pages/Illustrations"));
+const MattePainting = lazy(() => import("./pages/MattePainting.jsx"));
+const ConceptArt = lazy(() => import("./pages/ConceptArt.jsx"));
+const Contact = lazy(() => import("./pages/Contact.jsx"));
+const About = lazy(() => import("./pages/About.jsx"));
+const Home = lazy(() => import("./pages/Home.jsx"));
+const Illustrations = lazy(() => import("./pages/Illustrations.jsx"));
 
 const router = createBrowserRouter([
   {

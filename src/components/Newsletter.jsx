@@ -131,6 +131,14 @@ function Newsletter() {
         >
           <i className="fa-brands fa-artstation"></i>
         </a>
+        <a
+          style={{ color: "black" }}
+          href="https://www.linkedin.com/in/tesin-thomas-a898a016a/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i className="fa-brands fa-linkedin"></i>
+        </a>
       </div>
     </footer>
   );

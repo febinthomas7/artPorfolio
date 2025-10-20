@@ -49,9 +49,13 @@ function GalleryGrid({ dataUrl, title }) {
       <h1 className="gallery-title">{title}</h1>
 
       {loading ? (
-        <div className="my-masonry-grid">
-          {[...Array(8)].map((_, i) => (
-            <div key={i} className="skeleton-card"></div>
+        <div className="mansory-grid">
+          {[...Array(8)].map((_, index) => (
+            <div className="mansory-item" key={index}>
+              <div className="mansory-img-wrapper">
+                <img loading="lazy" className="mansory-img" src="./bg.webp" />
+              </div>
+            </div>
           ))}
         </div>
       ) : (

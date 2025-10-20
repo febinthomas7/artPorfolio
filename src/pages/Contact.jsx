@@ -49,8 +49,10 @@ function Contact() {
       <div className="c-2">
         <div className="c-3">
           <p>CONTACT US</p>
-          <p>tesin96thomas@gmail.com</p>
+          <a href="mailto:tesin96thomas@gmail.com">tesin96thomas@gmail.com</a>
           <p>Delhi, India</p>
+          <p>📞 +91 97179 60826</p>
+
           <div className="c-5">
             <a
               style={{ color: "black" }}
@@ -75,6 +77,14 @@ function Contact() {
               rel="noopener noreferrer"
             >
               <i className="fa-brands fa-artstation"></i>
+            </a>
+            <a
+              style={{ color: "black" }}
+              href="https://www.linkedin.com/in/tesin-thomas-a898a016a/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fa-brands fa-linkedin"></i>
             </a>
           </div>
         </div>

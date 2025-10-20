@@ -11,7 +11,7 @@
 
 .headerr {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,7 +26,7 @@
 
 .subtitle {
   font-size: 1.5rem;
-  color: #0891b2;
+  color: #777;
   font-weight: 500;
   margin-bottom: 1.5rem;
 }
@@ -52,9 +52,9 @@
 }
 
 .tag-secondary {
-  background-color: #ecfeff;
-  color: #0e7490;
-  border: 1px solid #a5f3fc;
+  background-color: #77777733;
+  color: #000000;
+  border: 1px solid #ffffff;
 }
 
 .sections {
@@ -63,6 +63,9 @@
   gap: 3rem;
 }
 
+p {
+  text-align: justify;
+}
 .section {
   animation: fadeIn 0.5s ease-in;
   flex-direction: column;
@@ -91,6 +94,7 @@
   font-size: 1.875rem;
   font-weight: 700;
   color: #0f172a;
+  text-decoration: underline;
 }
 
 .icon {
@@ -186,6 +190,9 @@
   .headerr h1 {
     font-size: 2rem;
   }
+  .headerr {
+    margin-bottom: 0;
+  }
 
   .subtitle {
     font-size: 1.25rem;
@@ -197,5 +204,8 @@
 
   .container {
     padding: 2rem 1rem;
+  }
+  .sections {
+    padding-inline: 16px;
   }
 }
