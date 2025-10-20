@@ -506,7 +506,7 @@ img {
   }
   #name input,
   .name input {
-    width: 160px;
+    width: 148px;
   }
   #n-44 {
     height: 23px;
@@ -658,11 +658,11 @@ img {
   }
   .c-3 {
     padding: 0;
-    margin-right: 142px;
+    margin-right: 110px;
   }
   input[type="email" i],
   textarea {
-    width: 330px;
+    width: 300px;
   }
   .c-3 p:first-child {
     font-size: 30px;

@@ -51,7 +51,10 @@ function Contact() {
           <p>CONTACT US</p>
           <a href="mailto:tesin96thomas@gmail.com">tesin96thomas@gmail.com</a>
           <p>Delhi, India</p>
-          <p>📞 +91 97179 60826</p>
+
+          <p style={{ color: "gray" }}>
+            <i className="fas fa-phone"></i> +91 97179 60826
+          </p>
 
           <div className="c-5">
             <a
