@@ -6,9 +6,11 @@ import FallBack from "./components/FallBack.jsx";
 import "./style.css";
 import "react-toastify/dist/ReactToastify.css";
 import "./loader.css";
-
+import ErrorBoundary from "./components/ErrorBoundary.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <Suspense fallback={<FallBack />}>
-    <RouterProvider router={router} />
-  </Suspense>
+  <ErrorBoundary>
+    <Suspense fallback={<FallBack />}>
+      <RouterProvider router={router} />
+    </Suspense>
+  </ErrorBoundary>
 );

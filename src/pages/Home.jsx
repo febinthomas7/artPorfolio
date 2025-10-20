@@ -146,7 +146,6 @@ function Home() {
     <div style={{ overflowX: "hidden" }}>
       <Header />
       <ToastContainer autoClose={1000} hideProgressBar theme="dark" />
-
       <div className="marquee">
         {loading && (
           <div className="contain">
