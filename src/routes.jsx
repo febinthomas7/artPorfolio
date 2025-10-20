@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
 const MattePainting = lazy(() => import("./pages/MattePainting.jsx"));
+const NotFound = lazy(() => import("./pages/NotFound.jsx"));
+
 const ConceptArt = lazy(() => import("./pages/ConceptArt.jsx"));
 const Contact = lazy(() => import("./pages/Contact.jsx"));
 const About = lazy(() => import("./pages/About.jsx"));
@@ -31,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/matte-painting",
     element: <MattePainting />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 
