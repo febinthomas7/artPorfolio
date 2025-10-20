@@ -22,7 +22,7 @@ function About() {
         <div className="sections">
           <section className="section">
             <div className="text-content">
-              <p>
+              <p className="about">
                 Tesin Thomas is a passionate and skilled Graphic Designer and
                 Visual Storyteller with over 5 years of creative experience,
                 including roles as Associate – Art & Design at BYJU’S – Think &
@@ -31,7 +31,7 @@ function About() {
                 artistic vision, technical precision, and strategic thinking to
                 craft visuals that inspire, engage, and communicate effectively.
               </p>
-              <p>
+              <p className="about">
                 Throughout his career, Tesin has collaborated with professionals
                 across Media, Animation, Gaming, and Advertising, gaining a deep
                 understanding of diverse visual languages. His expertise in
@@ -40,7 +40,7 @@ function About() {
                 layouts, branding campaigns, and storyboards to concept art,
                 book illustrations, and digital matte paintings.
               </p>
-              <p>
+              <p className="about">
                 At BYJU’S, Tesin played a key role in creating educational
                 visuals that made complex learning concepts interactive and
                 visually engaging. At Swiggy, he currently leads the design of
@@ -49,7 +49,7 @@ function About() {
                 engagement and retention.
               </p>
 
-              <p>
+              <p className="about">
                 In addition to his professional roles, Tesin has worked on
                 numerous freelance projects, further expanding his exposure in
                 the creative industry and refining his skills in photography,
@@ -59,7 +59,7 @@ function About() {
                 creative and technical expertise.
               </p>
 
-              <p>
+              <p className="about">
                 Tesin is not only a designer but also a creative thinker and
                 problem-solver. Constantly exploring new ideas, he embraces
                 emerging design trends and tools to deliver work that remains
